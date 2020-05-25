@@ -1,0 +1,25 @@
+name: Deployment
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    name: Publish website
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build
+        run: |
+          cargo install mdbook
+          cp README.md src/misc/introduction.md
+          printf 'plab\nproject-rfcs-template\nabuse@plab.io\nno\n' | ./bin/bootstrap.sh
+          ./bin/generate-rfcs-summary.sh
+          mdbook build
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./book
