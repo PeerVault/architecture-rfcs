@@ -1,6 +1,6 @@
 # Contributors
 
-Here is a list of the contributors who participate in the project.
+Here is a list of the contributors who participate in the PeerVault project.
 
-- [Jane Done](https://github.com/XXXXXX)
+- [Pierre Tomasina](https://github.com/pierozi)
 

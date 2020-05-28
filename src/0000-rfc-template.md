@@ -1,7 +1,7 @@
 - Feature Name: (fill me in with a unique ident, `my_awesome_feature`)
 - Start Date: (fill me in with today's date, YYYY-MM-DD)
-- RFC PR: [$ORG/$REPO#0000](https://github.com/$ORG/$REPO/pull/0000)
-- Integration Issue: [$ORG/$REPO#0000](https://github.com/$ORG/$REPO/issues/0000)
+- RFC PR: [PeerVault/architecture-rfcs#0000](https://github.com/PeerVault/architecture-rfcs/pull/0000)
+- Integration Issue: [PeerVault/architecture-rfcs#0000](https://github.com/PeerVault/architecture-rfcs/issues/0000)
 
 # Summary
 [summary]: #summary

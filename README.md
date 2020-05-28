@@ -1,49 +1,21 @@
-# RFC Template
+<a href="//peervault.github.io/architecture-rfcs">
+  <img src="//peervault.github.io/architecture-rfcs/images/peervault_logo.svg" alt="PeerVault" width="80px" align="left" style="padding:25px 20px 0 20px"/>
+</a>
 
-RFCs are a process of documenting proposal for technical change.
-It help to structure project architecture around collective discussions with your community.
 
-This repository is a github template that will help you easily bootstrap your RFC book.
-You can view the demo at [https://plab-io.github.io/project-rfcs-template/](https://plab-io.github.io/project-rfcs-template).
+> **PeerVault** is a peer-to-peer decentralized application used to share sensitive information with someone else identified by cryptographic keys. 
+The Vault is yours, no server involved, **100% Open Source**.
+Leverage from blockchain technology innovation such as libp2p and bip39 Mnemonic code for generating deterministic keys.
 
-## What's included
+<br>
 
-1. RFCs book setup using mdbook
-2. RFC template at `src/0000-rfc-template.md` with example at `src/rfcs/0000-awesome-rfc-template.md`
-3. RFC guide at `src/rfcs/rfcs.md`
-4. Code Of Conduct form https://opensource.guide/code-of-conduct/
-5. Contributor page
-6. Github workflow to publish mdBook on github-pages
+# PeerVault Architecture & RFCs
 
-## How to Use It
+Architecture and design Book implementation of the PeerVault.
 
-1. Use this repo as a template
-2. Use bootstrap script replace the template variables
-```bash
-❯ ./bin/bootstrap.sh
-Github Organization Name:
-PLAB-IO
+This repository build a book available at [https://peervault.github.io/architecture-rfcs](https://peervault.github.io/architecture-rfcs).
 
-Repository Name:
-project-rfcs-template
+## Contributing
 
-Contact in case of abuse report:
-abuse@plab.io
-
-Did you want remove rfc example?: [yes/no]
-yes
-
-rm 'src/rfcs/0000-awesome-rfc-template.md'
-```
-
-3. Following the guide instruction of section `How to propose a new RFC`
-
-## Contribution
-
-If you have any question, recommendation, or improvement.
-Or even if you use this class and it's useful for you,
-thanks for taking a few minutes to open an issue and share your experience.
-
-- Fork :book:
-- Push :runner:
-- PR :clap:
+If you'd like to contribute to PeerVault of new features or change that you think can improve the product,
+Please follow the [RFC instruction](https://peervault.github.io/architecture-rfcs/rfcs/rfcs.html)
