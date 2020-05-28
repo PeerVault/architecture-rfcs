@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Introduction - project-rfcs-template</title>
+        <title>Introduction - PeerVault Architecture &amp; RFCs Book</title>
         
 
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -81,7 +81,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="misc/introduction.html">Introduction</a></li><li class="chapter-item expanded "><a href="rfcs/rfcs.html">RFCs</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="rfcs/0000-awesome-rfc-template.html">0000-awesome-rfc-template</a></li><li class="spacer"></li></ol></li><li class="chapter-item expanded "><a href="misc/code-of-conduct.html">Code Of Conduct</a></li><li class="chapter-item expanded affix "><a href="misc/contributors.html">Contributors</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="misc/introduction.html">Introduction</a></li><li class="chapter-item expanded "><a href="rfcs/rfcs.html">RFCs</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="misc/code-of-conduct.html">Code Of Conduct</a></li><li class="chapter-item expanded affix "><a href="misc/contributors.html">Contributors</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -113,14 +113,14 @@
                         
                     </div>
 
-                    <h1 class="menu-title">project-rfcs-template</h1>
+                    <h1 class="menu-title">PeerVault Architecture &amp; RFCs Book</h1>
 
                     <div class="right-buttons">
                         <a href="print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
                         
-                        <a href="https://github.com/plab/project-rfcs-template" title="Git repository" aria-label="Git repository">
+                        <a href="https://github.com/PeerVault/architecture-rfcs" title="Git repository" aria-label="Git repository">
                             <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
                         
@@ -151,52 +151,21 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#rfc-template" id="rfc-template">RFC Template</a></h1>
-<p>RFCs are a process of documenting proposal for technical change.
-It help to structure project architecture around collective discussions with your community.</p>
-<p>This repository is a github template that will help you easily bootstrap your RFC book.
-You can view the demo at <a href="https://plab-io.github.io/project-rfcs-template">https://plab-io.github.io/project-rfcs-template/</a>.</p>
-<h2><a class="header" href="#whats-included" id="whats-included">What's included</a></h2>
-<ol>
-<li>RFCs book setup using mdbook</li>
-<li>RFC template at <code>src/0000-rfc-template.md</code> with example at <code>src/rfcs/0000-awesome-rfc-template.md</code></li>
-<li>RFC guide at <code>src/rfcs/rfcs.md</code></li>
-<li>Code Of Conduct form https://opensource.guide/code-of-conduct/</li>
-<li>Contributor page</li>
-<li>Github workflow to publish mdBook on github-pages</li>
-</ol>
-<h2><a class="header" href="#how-to-use-it" id="how-to-use-it">How to Use It</a></h2>
-<ol>
-<li>Use this repo as a template</li>
-<li>Use bootstrap script replace the template variables</li>
-</ol>
-<pre><code class="language-bash">❯ ./bin/bootstrap.sh
-Github Organization Name:
-PLAB-IO
-
-Repository Name:
-project-rfcs-template
-
-Contact in case of abuse report:
-abuse@plab.io
-
-Did you want remove rfc example?: [yes/no]
-yes
-
-rm 'src/rfcs/0000-awesome-rfc-template.md'
-</code></pre>
-<ol start="3">
-<li>Following the guide instruction of section <code>How to propose a new RFC</code></li>
-</ol>
-<h2><a class="header" href="#contribution" id="contribution">Contribution</a></h2>
-<p>If you have any question, recommendation, or improvement.
-Or even if you use this class and it's useful for you,
-thanks for taking a few minutes to open an issue and share your experience.</p>
-<ul>
-<li>Fork :book:</li>
-<li>Push :runner:</li>
-<li>PR :clap:</li>
-</ul>
+                        <a href="//peervault.github.io/architecture-rfcs">
+  <img src="//peervault.github.io/architecture-rfcs/images/peervault_logo.svg" alt="PeerVault" width="80px" align="left" style="padding:25px 20px 0 20px"/>
+</a>
+<blockquote>
+<p><strong>PeerVault</strong> is a peer-to-peer decentralized application used to share sensitive information with someone else identified by cryptographic keys. 
+The Vault is yours, no server involved, <strong>100% Open Source</strong>.
+Leverage from blockchain technology innovation such as libp2p and bip39 Mnemonic code for generating deterministic keys.</p>
+</blockquote>
+<br>
+<h1><a class="header" href="#peervault-architecture--rfcs" id="peervault-architecture--rfcs">PeerVault Architecture &amp; RFCs</a></h1>
+<p>Architecture and design Book implementation of the PeerVault.</p>
+<p>This repository build a book available at <a href="https://peervault.github.io/architecture-rfcs">https://peervault.github.io/architecture-rfcs</a>.</p>
+<h2><a class="header" href="#contributing" id="contributing">Contributing</a></h2>
+<p>If you'd like to contribute to PeerVault of new features or change that you think can improve the product,
+Please follow the <a href="https://peervault.github.io/architecture-rfcs/rfcs/rfcs.html">RFC instruction</a></p>
 
                     </main>
 
