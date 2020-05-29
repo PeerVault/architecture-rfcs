@@ -1,5 +1,5 @@
-<a href="//peervault.github.io/architecture-rfcs">
-  <img src="//peervault.github.io/architecture-rfcs/images/peervault_logo.svg" alt="PeerVault" width="80px" align="left" style="padding:25px 20px 0 20px"/>
+<a href="https://peervault.github.io/architecture-rfcs">
+  <img src="https://peervault.github.io/architecture-rfcs/images/peervault_logo.svg" alt="PeerVault" width="80px" align="left" style="padding:25px 20px 0 20px"/>
 </a>
 
 
@@ -14,6 +14,17 @@ Leverage from blockchain technology innovation such as libp2p and bip39 Mnemonic
 Architecture and design Book implementation of the PeerVault.
 
 This repository build a book available at [https://peervault.github.io/architecture-rfcs](https://peervault.github.io/architecture-rfcs).
+
+## But, Why ?
+Most people share sensible passwords and documents through email and insecure messaging platform.
+Even in IT professional environment, it is common to exchange secrets without securing the exchange properly.
+Who never shared a ssh key through slack?
+
+## Values 
+1. Must be decentralized (act as Server and Client at same time)
+2. 1st Grade Security (encryption and tutti quanti)
+3. Open Source (because strong security can only be built over time by the community)
+4. Clean Architecture
 
 ## Contributing
 

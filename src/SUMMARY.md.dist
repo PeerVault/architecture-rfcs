@@ -1,6 +1,15 @@
 # Summary
 
 - [Introduction](misc/introduction.md)
+- [Architecture](architecture/architecture.md)
+  - [Components](architecture/components.md)
+    - [Service (Daemon)](architecture/components/service-daemon.md)
+    - [GUI](architecture/components/gui.md)
+    - [CLI](architecture/components/cli.md)
+  - [Protocol](architecture/protocol.md)
+    - [Secret p2p exchange](architecture/protocol/secret-sharing.md)
+  - [Cryptography](architecture/crypto.md)
+    - [Owner Keychain](architecture/crypto/owner.md)
 - [RFCs](rfcs/rfcs.md)
 ?RFC_LIST?
 -----------

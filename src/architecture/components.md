@@ -1,0 +1,3 @@
+- [Service (Daemon)](/architecture/components/service-daemon.md)
+- [GUI-Flutter](/architecture/components/gui.md)
+- [Command Line Interface](/architecture/components/cli.md)

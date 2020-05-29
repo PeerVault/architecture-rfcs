@@ -5,10 +5,15 @@ language = "en"
 [build]
 create-missing = false
 
+[preprocessor.mermaid]
+command = "mdbook-mermaid"
+
 [output.html]
 default-theme = "light"
 preferred-dark-theme = "coal"
 no-section-label = true
-# google-analytics = "123456"
+google-analytics = "UA-52121593-5"
 git-repository-url = "https://github.com/PeerVault/architecture-rfcs"
 git-repository-icon = "fa-github"
+additional-css = ["mermaid.css"]
+additional-js = ["mermaid.min.js", "mermaid-init.js"]
