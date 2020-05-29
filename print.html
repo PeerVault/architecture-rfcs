@@ -31,6 +31,8 @@
 
         <!-- Custom theme stylesheets -->
         
+        <link rel="stylesheet" href="mermaid.css">
+        
 
         
     </head>
@@ -83,7 +85,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="misc/introduction.html">Introduction</a></li><li class="chapter-item expanded "><a href="rfcs/rfcs.html">RFCs</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="misc/code-of-conduct.html">Code Of Conduct</a></li><li class="chapter-item expanded affix "><a href="misc/contributors.html">Contributors</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="misc/introduction.html">Introduction</a></li><li class="chapter-item expanded "><a href="architecture/architecture.html">Architecture</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="architecture/components.html">Components</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="architecture/components/service-daemon.html">Service (Daemon)</a></li><li class="chapter-item expanded "><a href="architecture/components/gui.html">GUI</a></li><li class="chapter-item expanded "><a href="architecture/components/cli.html">CLI</a></li></ol></li><li class="chapter-item expanded "><a href="architecture/protocol.html">Protocol</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="architecture/protocol/secret-sharing.html">Secret p2p exchange</a></li></ol></li><li class="chapter-item expanded "><a href="architecture/crypto.html">Cryptography</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="architecture/crypto/owner.html">Owner Keychain</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="rfcs/rfcs.html">RFCs</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="misc/code-of-conduct.html">Code Of Conduct</a></li><li class="chapter-item expanded affix "><a href="misc/contributors.html">Contributors</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -153,8 +155,8 @@
 
                 <div id="content" class="content">
                     <main>
-                        <a href="misc///peervault.github.io/architecture-rfcs">
-  <img src="misc///peervault.github.io/architecture-rfcs/images/peervault_logo.svg" alt="PeerVault" width="80px" align="left" style="padding:25px 20px 0 20px"/>
+                        <a href="https://peervault.github.io/architecture-rfcs">
+  <img src="https://peervault.github.io/architecture-rfcs/images/peervault_logo.svg" alt="PeerVault" width="80px" align="left" style="padding:25px 20px 0 20px"/>
 </a>
 <blockquote>
 <p><strong>PeerVault</strong> is a peer-to-peer decentralized application used to share sensitive information with someone else identified by cryptographic keys. 
@@ -165,15 +167,149 @@ Leverage from blockchain technology innovation such as libp2p and bip39 Mnemonic
 <h1><a class="header" href="#peervault-architecture--rfcs" id="peervault-architecture--rfcs">PeerVault Architecture &amp; RFCs</a></h1>
 <p>Architecture and design Book implementation of the PeerVault.</p>
 <p>This repository build a book available at <a href="https://peervault.github.io/architecture-rfcs">https://peervault.github.io/architecture-rfcs</a>.</p>
+<h2><a class="header" href="#but-why-" id="but-why-">But, Why ?</a></h2>
+<p>Most people share sensible passwords and documents through email and insecure messaging platform.
+Even in IT professional environment, it is common to exchange secrets without securing the exchange properly.
+Who never shared a ssh key through slack?</p>
+<h2><a class="header" href="#values" id="values">Values</a></h2>
+<ol>
+<li>Must be decentralized (act as Server and Client at same time)</li>
+<li>1st Grade Security (encryption and tutti quanti)</li>
+<li>Open Source (because strong security can only be built over time by the community)</li>
+<li>Clean Architecture</li>
+</ol>
 <h2><a class="header" href="#contributing" id="contributing">Contributing</a></h2>
 <p>If you'd like to contribute to PeerVault of new features or change that you think can improve the product,
 Please follow the <a href="https://peervault.github.io/architecture-rfcs/rfcs/rfcs.html">RFC instruction</a></p>
+<h1><a class="header" href="#architecture" id="architecture">Architecture</a></h1>
+<h2><a class="header" href="#table-of-contents" id="table-of-contents">Table of Contents</a></h2>
+<ul>
+<li><a href="architecture/architecture.html#architecture">Opening</a></li>
+<li><a href="architecture/architecture.html#table-of-contents">Table of Contents</a></li>
+<li><a href="architecture/architecture.html#glossary">Glossary</a></li>
+<li><a href="architecture/architecture.html#clean-architecture">Clean Architecture</a>
+<ul>
+<li><a href="architecture//architecture/components/service-daemon.html">Service (Daemon)</a></li>
+<li><a href="architecture//architecture/components/gui.html">GUI-Flutter</a></li>
+<li><a href="architecture//architecture/components/cli.html">Command Line Interface</a></li>
+</ul>
+</li>
+</ul>
+<h2><a class="header" href="#glossary" id="glossary">Glossary</a></h2>
+<table><thead><tr><th>Keyword</th><th>Definition</th></tr></thead><tbody>
+<tr><td>Owner</td><td>Owner represent a physical person that can have the same vault installed on many devices</td></tr>
+<tr><td>Vault</td><td>Represet the PeerVault software installed on a device</td></tr>
+<tr><td>Relay</td><td>The relay are a server that will proxy the connection between two devices to avoid NAT issue</td></tr>
+<tr><td>Seed</td><td>Represent the root key of an owner, used for rebuild any Owner master key. <strong>use bitcoin BIP39</strong></td></tr>
+<tr><td>Mnemonic or Paper Key</td><td>12 words ASCII representation of a seed</td></tr>
+<tr><td>Master Key</td><td>Key generate from a seed <strong>use bitcoin BIP32</strong></td></tr>
+<tr><td>Child Key</td><td>Key generate from a master key <strong>use bitcoin BIP32</strong></td></tr>
+<tr><td>LibP2P</td><td>It is the p2p library used to secure the exchange between peer</td></tr>
+<tr><td>Peer</td><td>A Peer is a Vault connected to the network, listening through relay</td></tr>
+<tr><td>QmPeerId</td><td>Represent unique ID of a Peer calculated from child key, used to announced peer on libp2p network</td></tr>
+<tr><td>Key</td><td>Key as capital word represent a pair of private/public keys, like Master Key and Child Key</td></tr>
+</tbody></table>
+<h2><a class="header" href="#clean-architecture" id="clean-architecture">Clean Architecture</a></h2>
+<p>Clean Architecture is a well-known design that promotes loosely coupled application components to have better 
+control and flexibility over time on each part.</p>
+<p>First, we have two main components:</p>
+<ol>
+<li>Human Interface (GUI or CLI)</li>
+<li>Business Logic (SERVICE)</li>
+</ol>
+<p>It can be kind of obvious for web developers but in the world of desktop applications it is not so much popular.
+Split these two components gave us flexibility to choose different programming languages as well as ease the development 
+of many Client UI without having to cope with all the complexity of business logic.</p>
+<p><img src="architecture//images/peervault-soft-archi.png" alt="PeerVault Daemon Architecture" /></p>
+<ul>
+<li><a href="architecture//architecture/components/service-daemon.html">Service (Daemon)</a></li>
+<li><a href="architecture//architecture/components/gui.html">GUI-Flutter</a></li>
+<li><a href="architecture//architecture/components/cli.html">Command Line Interface</a></li>
+</ul>
+<h2><a class="header" href="#peervault-service-daemon" id="peervault-service-daemon">PeerVault-Service (Daemon)</a></h2>
+<p>All the business logic reside in the Service.</p>
+<p>The Programming language chose are <strong>Go</strong>. Mainly because the underlying library <strong>libp2p</strong> have the most advanced 
+support with Go and was the only way to make it work securely the Relay communication for passing through NAT.</p>
+<p><img src="architecture/components//images/peervault-soft-archi.png" alt="PeerVault Daemon Architecture" /></p>
+<h3><a class="header" href="#layers" id="layers">Layers</a></h3>
+<p>The service are build on top of 3 layers:</p>
+<h4><a class="header" href="#1-communication" id="1-communication">1. Communication</a></h4>
+<p>The Blue layer represent the communication, internal with the GUI or external with other Peer.</p>
+<ul>
+<li>Local API: Expose HTTP API to manipulate the Vault create or restore Owner, create or share Secret</li>
+<li>WebSocket Event: Instant notification to GUI when a new secret is shared by another Vault same or different Owner</li>
+<li>Peer LibP2P: Enable secure p2p channel with other Vault through libp2p2 Relay to pass through NAT</li>
+</ul>
+<h4><a class="header" href="#2-domain" id="2-domain">2. Domain</a></h4>
+<p>The Yellow layer represent the internal Domain abstraction</p>
+<ul>
+<li>Owner: Identity of the Vault Owner, contain Master Key, Device Key, QmPeerId.</li>
+<li>Secret: Secret information, can have many format, Password, Document, Certificate, Private key...</li>
+<li>Exposure: Expose secret publicly on the computer, when mounting SSH Private key</li>
+<li>Backup: Able to export Vault DB encrypted, can only be restored by holding the Owner Master Key</li>
+</ul>
+<h4><a class="header" href="#3-persistence" id="3-persistence">3. Persistence</a></h4>
+<p>The Red layer represent the persistent abstraction, we are using the bbolt key/value database</p>
+<h2><a class="header" href="#peervault-gui-flutter-ui" id="peervault-gui-flutter-ui">PeerVault-GUI-Flutter (UI)</a></h2>
+<p>A Nice and smooth Desktop GUI to interact with the PeerVault daemon (service business logic)
+in order to send command (HTTP) or receiving notifications (WEBSOCKET).</p>
+<p>The Programming language chose are <strong>flutter</strong> because it offers a native integration where the pixel can be painted
+with a really nice declarative paradigm using Widget.
+The Desktop support is a bit young but in active development.</p>
+<h2><a class="header" href="#peervault-cli-ui" id="peervault-cli-ui">PeerVault-CLI (UI)</a></h2>
+<p>Able to communicate with the PeerVault Service API in the command line, 
+useful for a programmatic system like a secrets manager for infrastructure as code.</p>
+<h1><a class="header" href="#peer-protocol" id="peer-protocol">Peer Protocol</a></h1>
+<p>Explain in detail the protocol of communication between Peer.</p>
+<ul>
+<li><a href="architecture//architecture/protocol/secret-sharing.html">Secret Sharing</a></li>
+</ul>
+<h2><a class="header" href="#secret-p2p-exchange" id="secret-p2p-exchange">Secret p2p exchange</a></h2>
+<pre class="mermaid">sequenceDiagram
+    Alice Vault->>+Alice: (3) Decrypt secret binary
+    note over Alice,Bob: Exchange Encrypted with secio
+    Alice ->>+ Bob: (1) Shared secret request
+    Bob -->> Alice: (2) Accept secret
+    Alice ->>+ Bob: (4) Transfert secret data binary
+    Bob ->> Bob Vault: (5) encrypt secret binary
+</pre>
+<ol>
+<li>Alice send sharing secret request with data: <code>KeyPath, RequestId, Expiration</code></li>
+<li>Bob accept (and store infos in bbolt) or decline request and respond with data: <code>RequestId, Accepted</code></li>
+<li>Alice receive response and if Accepted use Child Key to decrypt secret from bbolt </li>
+<li>Alice send secret to Bob with <code>RequestId, Blob</code></li>
+<li>Bob verify the RequestId has been accpeted before encrypt secret with his Child Key in bbolt</li>
+</ol>
+<ul>
+<li>request must have expiration delay: 5min default</li>
+</ul>
+<table><thead><tr><th>Keywords</th><th>Definition</th></tr></thead><tbody>
+<tr><td>RequestId</td><td>the request id are used to trace the secret sharing to avoid malicious secret substitution</td></tr>
+<tr><td>KeyPath</td><td>Namespace and Secret name represent a path where secret is stored</td></tr>
+<tr><td>Accepted</td><td>Boolean to know if secret is accepted by receiver or not</td></tr>
+<tr><td>Expiration</td><td>The expiration date of request in format RFC3339</td></tr>
+</tbody></table>
+<ul>
+<li><a href="architecture//architecture/crypto/owner.html">Owner Keychain</a></li>
+</ul>
+<h2><a class="header" href="#owner-keychain" id="owner-keychain">Owner keychain</a></h2>
+<p>When a vault is created for the first time, the <code>Seed</code> will be generated and owner will be able to 
+keep the Mnemonic phrase also known as <code>Paper key</code></p>
+<p>Then a Master Key will be derivate from the Seed.
+And for each device, a Child Key hardened will be generated using a random Uint32 index</p>
+<p>Child Key will be used to create an identity for each Peers announced on the network.
+Communication between peer will be encrypted using Child Key derivation.</p>
+<p>The Relay will not be able to decrypt any exchange between peers.</p>
+<ul>
+<li>The Owner identification is made using <strong>Master Public Key</strong></li>
+<li>The Peer Identification is made using <strong>Child Public Key</strong></li>
+</ul>
 <h1><a class="header" href="#rfc--request-for-comments" id="rfc--request-for-comments">RFC / Request For Comments</a></h1>
 <p>RFCs are a process of documenting proposal for technical change.
 It help to structure project architecture around collective discussions seeking feedback from the community.
 RFC are represented by the form of documents that try to be speculative and precise.</p>
 <p>This template are heavily based on the famous <a href="https://rust-lang.github.io/rfcs/">Rust RFC Book</a></p>
-<h2><a class="header" href="#table-of-contents" id="table-of-contents">Table of Contents</a></h2>
+<h2><a class="header" href="#table-of-contents-1" id="table-of-contents-1">Table of Contents</a></h2>
 <ul>
 <li><a href="rfcs/rfcs.html#rfc--request-for-comments">Opening</a></li>
 <li><a href="rfcs/rfcs.html#table-of-contents">Table of Contents</a></li>
@@ -351,6 +487,23 @@ https://www.contributor-covenant.org/translations.</p>
         
 
         
+        <!-- Google Analytics Tag -->
+        <script type="text/javascript">
+            var localAddrs = ["localhost", "127.0.0.1", ""];
+
+            // make sure we don't activate google analytics if the developer is
+            // inspecting the book locally...
+            if (localAddrs.indexOf(document.location.hostname) === -1) {
+                (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+                ga('create', 'UA-52121593-5', 'auto');
+                ga('send', 'pageview');
+            }
+        </script>
+        
 
         
         
@@ -373,6 +526,10 @@ https://www.contributor-covenant.org/translations.</p>
         <script src="book.js" type="text/javascript" charset="utf-8"></script>
 
         <!-- Custom JS scripts -->
+        
+        <script type="text/javascript" src="mermaid.min.js"></script>
+        
+        <script type="text/javascript" src="mermaid-init.js"></script>
         
 
         

@@ -29,6 +29,8 @@
 
         <!-- Custom theme stylesheets -->
         
+        <link rel="stylesheet" href="../mermaid.css">
+        
 
         
     </head>
@@ -81,7 +83,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="../misc/introduction.html">Introduction</a></li><li class="chapter-item expanded "><a href="../rfcs/rfcs.html">RFCs</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="../misc/code-of-conduct.html" class="active">Code Of Conduct</a></li><li class="chapter-item expanded affix "><a href="../misc/contributors.html">Contributors</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../misc/introduction.html">Introduction</a></li><li class="chapter-item expanded "><a href="../architecture/architecture.html">Architecture</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../architecture/components.html">Components</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../architecture/components/service-daemon.html">Service (Daemon)</a></li><li class="chapter-item expanded "><a href="../architecture/components/gui.html">GUI</a></li><li class="chapter-item expanded "><a href="../architecture/components/cli.html">CLI</a></li></ol></li><li class="chapter-item expanded "><a href="../architecture/protocol.html">Protocol</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../architecture/protocol/secret-sharing.html">Secret p2p exchange</a></li></ol></li><li class="chapter-item expanded "><a href="../architecture/crypto.html">Cryptography</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../architecture/crypto/owner.html">Owner Keychain</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../rfcs/rfcs.html">RFCs</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="../misc/code-of-conduct.html" class="active">Code Of Conduct</a></li><li class="chapter-item expanded affix "><a href="../misc/contributors.html">Contributors</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -288,6 +290,23 @@ https://www.contributor-covenant.org/translations.</p>
         
 
         
+        <!-- Google Analytics Tag -->
+        <script type="text/javascript">
+            var localAddrs = ["localhost", "127.0.0.1", ""];
+
+            // make sure we don't activate google analytics if the developer is
+            // inspecting the book locally...
+            if (localAddrs.indexOf(document.location.hostname) === -1) {
+                (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+                ga('create', 'UA-52121593-5', 'auto');
+                ga('send', 'pageview');
+            }
+        </script>
+        
 
         
         
@@ -310,6 +329,10 @@ https://www.contributor-covenant.org/translations.</p>
         <script src="../book.js" type="text/javascript" charset="utf-8"></script>
 
         <!-- Custom JS scripts -->
+        
+        <script type="text/javascript" src="../mermaid.min.js"></script>
+        
+        <script type="text/javascript" src="../mermaid-init.js"></script>
         
 
         

@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Introduction - PeerVault Architecture &amp; RFCs Book</title>
+        <title>Architecture - PeerVault Architecture &amp; RFCs Book</title>
         
 
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -83,7 +83,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="../misc/introduction.html" class="active">Introduction</a></li><li class="chapter-item expanded "><a href="../architecture/architecture.html">Architecture</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../architecture/components.html">Components</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../architecture/components/service-daemon.html">Service (Daemon)</a></li><li class="chapter-item expanded "><a href="../architecture/components/gui.html">GUI</a></li><li class="chapter-item expanded "><a href="../architecture/components/cli.html">CLI</a></li></ol></li><li class="chapter-item expanded "><a href="../architecture/protocol.html">Protocol</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../architecture/protocol/secret-sharing.html">Secret p2p exchange</a></li></ol></li><li class="chapter-item expanded "><a href="../architecture/crypto.html">Cryptography</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../architecture/crypto/owner.html">Owner Keychain</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../rfcs/rfcs.html">RFCs</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="../misc/code-of-conduct.html">Code Of Conduct</a></li><li class="chapter-item expanded affix "><a href="../misc/contributors.html">Contributors</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../misc/introduction.html">Introduction</a></li><li class="chapter-item expanded "><a href="../architecture/architecture.html" class="active">Architecture</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../architecture/components.html">Components</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../architecture/components/service-daemon.html">Service (Daemon)</a></li><li class="chapter-item expanded "><a href="../architecture/components/gui.html">GUI</a></li><li class="chapter-item expanded "><a href="../architecture/components/cli.html">CLI</a></li></ol></li><li class="chapter-item expanded "><a href="../architecture/protocol.html">Protocol</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../architecture/protocol/secret-sharing.html">Secret p2p exchange</a></li></ol></li><li class="chapter-item expanded "><a href="../architecture/crypto.html">Cryptography</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../architecture/crypto/owner.html">Owner Keychain</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../rfcs/rfcs.html">RFCs</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="../misc/code-of-conduct.html">Code Of Conduct</a></li><li class="chapter-item expanded affix "><a href="../misc/contributors.html">Contributors</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -153,41 +153,59 @@
 
                 <div id="content" class="content">
                     <main>
-                        <a href="https://peervault.github.io/architecture-rfcs">
-  <img src="https://peervault.github.io/architecture-rfcs/images/peervault_logo.svg" alt="PeerVault" width="80px" align="left" style="padding:25px 20px 0 20px"/>
-</a>
-<blockquote>
-<p><strong>PeerVault</strong> is a peer-to-peer decentralized application used to share sensitive information with someone else identified by cryptographic keys. 
-The Vault is yours, no server involved, <strong>100% Open Source</strong>.
-Leverage from blockchain technology innovation such as libp2p and bip39 Mnemonic code for generating deterministic keys.</p>
-</blockquote>
-<br>
-<h1><a class="header" href="#peervault-architecture--rfcs" id="peervault-architecture--rfcs">PeerVault Architecture &amp; RFCs</a></h1>
-<p>Architecture and design Book implementation of the PeerVault.</p>
-<p>This repository build a book available at <a href="https://peervault.github.io/architecture-rfcs">https://peervault.github.io/architecture-rfcs</a>.</p>
-<h2><a class="header" href="#but-why-" id="but-why-">But, Why ?</a></h2>
-<p>Most people share sensible passwords and documents through email and insecure messaging platform.
-Even in IT professional environment, it is common to exchange secrets without securing the exchange properly.
-Who never shared a ssh key through slack?</p>
-<h2><a class="header" href="#values" id="values">Values</a></h2>
+                        <h1><a class="header" href="#architecture" id="architecture">Architecture</a></h1>
+<h2><a class="header" href="#table-of-contents" id="table-of-contents">Table of Contents</a></h2>
+<ul>
+<li><a href="#architecture">Opening</a></li>
+<li><a href="#table-of-contents">Table of Contents</a></li>
+<li><a href="#glossary">Glossary</a></li>
+<li><a href="#clean-architecture">Clean Architecture</a>
+<ul>
+<li><a href="/architecture/components/service-daemon.html">Service (Daemon)</a></li>
+<li><a href="/architecture/components/gui.html">GUI-Flutter</a></li>
+<li><a href="/architecture/components/cli.html">Command Line Interface</a></li>
+</ul>
+</li>
+</ul>
+<h2><a class="header" href="#glossary" id="glossary">Glossary</a></h2>
+<table><thead><tr><th>Keyword</th><th>Definition</th></tr></thead><tbody>
+<tr><td>Owner</td><td>Owner represent a physical person that can have the same vault installed on many devices</td></tr>
+<tr><td>Vault</td><td>Represet the PeerVault software installed on a device</td></tr>
+<tr><td>Relay</td><td>The relay are a server that will proxy the connection between two devices to avoid NAT issue</td></tr>
+<tr><td>Seed</td><td>Represent the root key of an owner, used for rebuild any Owner master key. <strong>use bitcoin BIP39</strong></td></tr>
+<tr><td>Mnemonic or Paper Key</td><td>12 words ASCII representation of a seed</td></tr>
+<tr><td>Master Key</td><td>Key generate from a seed <strong>use bitcoin BIP32</strong></td></tr>
+<tr><td>Child Key</td><td>Key generate from a master key <strong>use bitcoin BIP32</strong></td></tr>
+<tr><td>LibP2P</td><td>It is the p2p library used to secure the exchange between peer</td></tr>
+<tr><td>Peer</td><td>A Peer is a Vault connected to the network, listening through relay</td></tr>
+<tr><td>QmPeerId</td><td>Represent unique ID of a Peer calculated from child key, used to announced peer on libp2p network</td></tr>
+<tr><td>Key</td><td>Key as capital word represent a pair of private/public keys, like Master Key and Child Key</td></tr>
+</tbody></table>
+<h2><a class="header" href="#clean-architecture" id="clean-architecture">Clean Architecture</a></h2>
+<p>Clean Architecture is a well-known design that promotes loosely coupled application components to have better 
+control and flexibility over time on each part.</p>
+<p>First, we have two main components:</p>
 <ol>
-<li>Must be decentralized (act as Server and Client at same time)</li>
-<li>1st Grade Security (encryption and tutti quanti)</li>
-<li>Open Source (because strong security can only be built over time by the community)</li>
-<li>Clean Architecture</li>
+<li>Human Interface (GUI or CLI)</li>
+<li>Business Logic (SERVICE)</li>
 </ol>
-<h2><a class="header" href="#contributing" id="contributing">Contributing</a></h2>
-<p>If you'd like to contribute to PeerVault of new features or change that you think can improve the product,
-Please follow the <a href="https://peervault.github.io/architecture-rfcs/rfcs/rfcs.html">RFC instruction</a></p>
+<p>It can be kind of obvious for web developers but in the world of desktop applications it is not so much popular.
+Split these two components gave us flexibility to choose different programming languages as well as ease the development 
+of many Client UI without having to cope with all the complexity of business logic.</p>
+<p><img src="/images/peervault-soft-archi.png" alt="PeerVault Daemon Architecture" /></p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                         
+                            <a rel="prev" href="../misc/introduction.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
 
                         
-                            <a rel="next" href="../architecture/architecture.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="../architecture/components.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         
@@ -199,9 +217,13 @@ Please follow the <a href="https://peervault.github.io/architecture-rfcs/rfcs/rf
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 
+                    <a rel="prev" href="../misc/introduction.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
 
                 
-                    <a rel="next" href="../architecture/architecture.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="../architecture/components.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
                 

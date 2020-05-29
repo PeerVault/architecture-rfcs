@@ -29,6 +29,8 @@
 
         <!-- Custom theme stylesheets -->
         
+        <link rel="stylesheet" href="mermaid.css">
+        
 
         
     </head>
@@ -81,7 +83,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="misc/introduction.html">Introduction</a></li><li class="chapter-item expanded "><a href="rfcs/rfcs.html">RFCs</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="misc/code-of-conduct.html">Code Of Conduct</a></li><li class="chapter-item expanded affix "><a href="misc/contributors.html">Contributors</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="misc/introduction.html">Introduction</a></li><li class="chapter-item expanded "><a href="architecture/architecture.html">Architecture</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="architecture/components.html">Components</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="architecture/components/service-daemon.html">Service (Daemon)</a></li><li class="chapter-item expanded "><a href="architecture/components/gui.html">GUI</a></li><li class="chapter-item expanded "><a href="architecture/components/cli.html">CLI</a></li></ol></li><li class="chapter-item expanded "><a href="architecture/protocol.html">Protocol</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="architecture/protocol/secret-sharing.html">Secret p2p exchange</a></li></ol></li><li class="chapter-item expanded "><a href="architecture/crypto.html">Cryptography</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="architecture/crypto/owner.html">Owner Keychain</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="rfcs/rfcs.html">RFCs</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="misc/code-of-conduct.html">Code Of Conduct</a></li><li class="chapter-item expanded affix "><a href="misc/contributors.html">Contributors</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -151,8 +153,8 @@
 
                 <div id="content" class="content">
                     <main>
-                        <a href="//peervault.github.io/architecture-rfcs">
-  <img src="//peervault.github.io/architecture-rfcs/images/peervault_logo.svg" alt="PeerVault" width="80px" align="left" style="padding:25px 20px 0 20px"/>
+                        <a href="https://peervault.github.io/architecture-rfcs">
+  <img src="https://peervault.github.io/architecture-rfcs/images/peervault_logo.svg" alt="PeerVault" width="80px" align="left" style="padding:25px 20px 0 20px"/>
 </a>
 <blockquote>
 <p><strong>PeerVault</strong> is a peer-to-peer decentralized application used to share sensitive information with someone else identified by cryptographic keys. 
@@ -163,6 +165,17 @@ Leverage from blockchain technology innovation such as libp2p and bip39 Mnemonic
 <h1><a class="header" href="#peervault-architecture--rfcs" id="peervault-architecture--rfcs">PeerVault Architecture &amp; RFCs</a></h1>
 <p>Architecture and design Book implementation of the PeerVault.</p>
 <p>This repository build a book available at <a href="https://peervault.github.io/architecture-rfcs">https://peervault.github.io/architecture-rfcs</a>.</p>
+<h2><a class="header" href="#but-why-" id="but-why-">But, Why ?</a></h2>
+<p>Most people share sensible passwords and documents through email and insecure messaging platform.
+Even in IT professional environment, it is common to exchange secrets without securing the exchange properly.
+Who never shared a ssh key through slack?</p>
+<h2><a class="header" href="#values" id="values">Values</a></h2>
+<ol>
+<li>Must be decentralized (act as Server and Client at same time)</li>
+<li>1st Grade Security (encryption and tutti quanti)</li>
+<li>Open Source (because strong security can only be built over time by the community)</li>
+<li>Clean Architecture</li>
+</ol>
 <h2><a class="header" href="#contributing" id="contributing">Contributing</a></h2>
 <p>If you'd like to contribute to PeerVault of new features or change that you think can improve the product,
 Please follow the <a href="https://peervault.github.io/architecture-rfcs/rfcs/rfcs.html">RFC instruction</a></p>
@@ -174,7 +187,7 @@ Please follow the <a href="https://peervault.github.io/architecture-rfcs/rfcs/rf
                         
 
                         
-                            <a rel="next" href="rfcs/rfcs.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="architecture/architecture.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         
@@ -188,7 +201,7 @@ Please follow the <a href="https://peervault.github.io/architecture-rfcs/rfcs/rf
                 
 
                 
-                    <a rel="next" href="rfcs/rfcs.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="architecture/architecture.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
                 
@@ -198,6 +211,23 @@ Please follow the <a href="https://peervault.github.io/architecture-rfcs/rfcs/rf
 
         
 
+        
+        <!-- Google Analytics Tag -->
+        <script type="text/javascript">
+            var localAddrs = ["localhost", "127.0.0.1", ""];
+
+            // make sure we don't activate google analytics if the developer is
+            // inspecting the book locally...
+            if (localAddrs.indexOf(document.location.hostname) === -1) {
+                (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+                ga('create', 'UA-52121593-5', 'auto');
+                ga('send', 'pageview');
+            }
+        </script>
         
 
         
@@ -221,6 +251,10 @@ Please follow the <a href="https://peervault.github.io/architecture-rfcs/rfcs/rf
         <script src="book.js" type="text/javascript" charset="utf-8"></script>
 
         <!-- Custom JS scripts -->
+        
+        <script type="text/javascript" src="mermaid.min.js"></script>
+        
+        <script type="text/javascript" src="mermaid-init.js"></script>
         
 
         
