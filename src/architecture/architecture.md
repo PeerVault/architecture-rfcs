@@ -44,4 +44,4 @@ It can be kind of obvious for web developers but in the world of desktop applica
 Split these two components gave us flexibility to choose different programming languages as well as ease the development 
 of many Client UI without having to cope with all the complexity of business logic.
 
-![PeerVault Daemon Architecture](/images/peervault-soft-archi.png)
+![PeerVault Daemon Architecture](/architecture-rfcs/images/peervault-soft-archi.png)
