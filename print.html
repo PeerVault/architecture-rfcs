@@ -189,9 +189,9 @@ Please follow the <a href="https://peervault.github.io/architecture-rfcs/rfcs/rf
 <li><a href="architecture/architecture.html#glossary">Glossary</a></li>
 <li><a href="architecture/architecture.html#clean-architecture">Clean Architecture</a>
 <ul>
-<li><a href="architecture//architecture/components/service-daemon.html">Service (Daemon)</a></li>
-<li><a href="architecture//architecture/components/gui.html">GUI-Flutter</a></li>
-<li><a href="architecture//architecture/components/cli.html">Command Line Interface</a></li>
+<li><a href="architecture//architecture-rfcs/architecture/components/service-daemon.html">Service (Daemon)</a></li>
+<li><a href="architecture//architecture-rfcs/architecture/components/gui.html">GUI-Flutter</a></li>
+<li><a href="architecture//architecture-rfcs/architecture/components/cli.html">Command Line Interface</a></li>
 </ul>
 </li>
 </ul>
@@ -222,15 +222,15 @@ Split these two components gave us flexibility to choose different programming l
 of many Client UI without having to cope with all the complexity of business logic.</p>
 <p><img src="architecture//architecture-rfcs/images/peervault-soft-archi.png" alt="PeerVault Daemon Architecture" /></p>
 <ul>
-<li><a href="architecture//architecture/components/service-daemon.html">Service (Daemon)</a></li>
-<li><a href="architecture//architecture/components/gui.html">GUI-Flutter</a></li>
-<li><a href="architecture//architecture/components/cli.html">Command Line Interface</a></li>
+<li><a href="architecture//architecture-rfcs/architecture/components/service-daemon.html">Service (Daemon)</a></li>
+<li><a href="architecture//architecture-rfcs/architecture/components/gui.html">GUI-Flutter</a></li>
+<li><a href="architecture//architecture-rfcs/architecture/components/cli.html">Command Line Interface</a></li>
 </ul>
 <h2><a class="header" href="#peervault-service-daemon" id="peervault-service-daemon">PeerVault-Service (Daemon)</a></h2>
 <p>All the business logic reside in the Service.</p>
 <p>The Programming language chose are <strong>Go</strong>. Mainly because the underlying library <strong>libp2p</strong> have the most advanced 
 support with Go and was the only way to make it work securely the Relay communication for passing through NAT.</p>
-<p><img src="architecture/components//images/peervault-soft-archi.png" alt="PeerVault Daemon Architecture" /></p>
+<p><img src="architecture/components//architecture-rfcs/images/peervault-soft-archi.png" alt="PeerVault Daemon Architecture" /></p>
 <h3><a class="header" href="#layers" id="layers">Layers</a></h3>
 <p>The service are build on top of 3 layers:</p>
 <h4><a class="header" href="#1-communication" id="1-communication">1. Communication</a></h4>
@@ -262,7 +262,7 @@ useful for a programmatic system like a secrets manager for infrastructure as co
 <h1><a class="header" href="#peer-protocol" id="peer-protocol">Peer Protocol</a></h1>
 <p>Explain in detail the protocol of communication between Peer.</p>
 <ul>
-<li><a href="architecture//architecture/protocol/secret-sharing.html">Secret Sharing</a></li>
+<li><a href="architecture//architecture-rfcs/architecture/protocol/secret-sharing.html">Secret Sharing</a></li>
 </ul>
 <h2><a class="header" href="#secret-p2p-exchange" id="secret-p2p-exchange">Secret p2p exchange</a></h2>
 <pre class="mermaid">sequenceDiagram
@@ -290,7 +290,7 @@ useful for a programmatic system like a secrets manager for infrastructure as co
 <tr><td>Expiration</td><td>The expiration date of request in format RFC3339</td></tr>
 </tbody></table>
 <ul>
-<li><a href="architecture//architecture/crypto/owner.html">Owner Keychain</a></li>
+<li><a href="architecture//architecture-rfcs/architecture/crypto/owner.html">Owner Keychain</a></li>
 </ul>
 <h2><a class="header" href="#owner-keychain" id="owner-keychain">Owner keychain</a></h2>
 <p>When a vault is created for the first time, the <code>Seed</code> will be generated and owner will be able to 
@@ -304,6 +304,7 @@ Communication between peer will be encrypted using Child Key derivation.</p>
 <li>The Owner identification is made using <strong>Master Public Key</strong></li>
 <li>The Peer Identification is made using <strong>Child Public Key</strong></li>
 </ul>
+<p><img src="architecture/crypto//architecture-rfcs/images/PeerVault-crypto-derivation-key.jpg" alt="PeerVault Daemon Architecture" /></p>
 <h1><a class="header" href="#rfc--request-for-comments" id="rfc--request-for-comments">RFC / Request For Comments</a></h1>
 <p>RFCs are a process of documenting proposal for technical change.
 It help to structure project architecture around collective discussions seeking feedback from the community.
