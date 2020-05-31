@@ -13,3 +13,5 @@ The Relay will not be able to decrypt any exchange between peers.
 
 * The Owner identification is made using **Master Public Key**
 * The Peer Identification is made using **Child Public Key**
+
+![PeerVault Daemon Architecture](/architecture-rfcs/images/PeerVault-crypto-derivation-key.jpg)

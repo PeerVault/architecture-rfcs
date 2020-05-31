@@ -1,1 +1,1 @@
-- [Owner Keychain](/architecture/crypto/owner.md)
+- [Owner Keychain](/architecture-rfcs/architecture/crypto/owner.md)

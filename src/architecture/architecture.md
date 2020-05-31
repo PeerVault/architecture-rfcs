@@ -8,9 +8,9 @@
   - [Table of Contents]
   - [Glossary]
   - [Clean Architecture]
-    - [Service (Daemon)](/architecture/components/service-daemon.md)
-    - [GUI-Flutter](/architecture/components/gui.md)
-    - [Command Line Interface](/architecture/components/cli.md)
+    - [Service (Daemon)](/architecture-rfcs/architecture/components/service-daemon.html)
+    - [GUI-Flutter](/architecture-rfcs/architecture/components/gui.md)
+    - [Command Line Interface](/architecture-rfcs/architecture/components/cli.md)
 
 ## Glossary
 [Glossary]: #glossary
