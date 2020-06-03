@@ -2,8 +2,8 @@
 
 All the business logic reside in the Service.
 
-The Programming language chose are __Go__. Mainly because the underlying library __libp2p__ have the most advanced 
-support with Go and was the only way to make it work securely the Relay communication for passing through NAT.
+The daemon has been write with __GoLang__. Mainly because the underlying library __libp2p__ have the most advanced 
+support with Go and was the only way to make it work the relay communication securely the for passing through NAT.
 
 ![PeerVault Daemon Architecture](/architecture-rfcs/images/peervault-soft-archi.png)
 
